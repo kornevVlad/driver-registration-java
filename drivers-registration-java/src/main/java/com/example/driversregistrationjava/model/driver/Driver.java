@@ -1,6 +1,5 @@
 package com.example.driversregistrationjava.model.driver;
 
-import com.example.driversregistrationjava.model.car.Car;
 import lombok.Data;
 
 import javax.persistence.*;
