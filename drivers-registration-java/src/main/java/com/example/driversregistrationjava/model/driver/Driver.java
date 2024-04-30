@@ -1,5 +1,6 @@
 package com.example.driversregistrationjava.model.driver;
 
+import com.example.driversregistrationjava.model.car.Car;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -25,4 +26,8 @@ public class Driver {
 
     @Column(name = "driving_experience")
     private int drivingExperience; //стаж вождения
+
+    @JoinColumn(name = "rentCar")
+    @OneToOne
+    private Car rentCar; //автомобиль взятый в аренду
 }
