@@ -45,8 +45,8 @@ public class CarServiceImpl implements CarService {
         if (upCar.getYearRelease() != null) {
             car.setYearRelease(upCar.getYearRelease());
         }
-        if (upCar.getTypeRent() != null) {
-            car.setTypeRent(upCar.getTypeRent());
+        if (upCar.getTypeRentDriver() != null) {
+            car.setTypeRentDriver(upCar.getTypeRentDriver());
         }
         if (upCar.getTypeCar() != null) {
             car.setTypeCar(upCar.getTypeCar());

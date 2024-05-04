@@ -17,7 +17,7 @@ public class CarMapper {
         car.setNumberCar(carDto.getNumberCar());
         car.setVinCar(carDto.getVinCar());
         car.setYearRelease(carDto.getYearRelease());
-        car.setTypeRent(carDto.getTypeRent());
+        car.setTypeRentDriver(carDto.getTypeRentDriver());
         car.setTypeCar(carDto.getTypeCar());
         return car;
     }
@@ -31,7 +31,7 @@ public class CarMapper {
         carDto.setNumberCar(car.getNumberCar());
         carDto.setVinCar(car.getVinCar());
         carDto.setYearRelease(car.getYearRelease());
-        carDto.setTypeRent(car.getTypeRent());
+        carDto.setTypeRentDriver(car.getTypeRentDriver());
         carDto.setTypeCar(car.getTypeCar());
         return carDto;
     }

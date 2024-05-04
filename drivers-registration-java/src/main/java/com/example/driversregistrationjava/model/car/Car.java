@@ -1,11 +1,10 @@
 package com.example.driversregistrationjava.model.car;
 
 import com.example.driversregistrationjava.model.car.status.TypeCar;
-import com.example.driversregistrationjava.model.car.status.TypeRent;
+import com.example.driversregistrationjava.model.car.status.TypeRentDriver;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Data
 @Entity
@@ -18,7 +17,7 @@ public class Car {
     private Long id;
 
     @Column(name = "number_car")
-    private Integer numberCar; //номер автомобиля
+    private String numberCar; //номер автомобиля
 
     @Column(name = "vin_car")
     private String vinCar; //вин номер автомобиля
@@ -27,7 +26,7 @@ public class Car {
     private Integer yearRelease; //год выпуска
 
     @Enumerated(EnumType.STRING)
-    private TypeRent typeRent; //в аренде авто или нет
+    private TypeRentDriver typeRentDriver; //в аренде авто или нет
 
     @Enumerated(EnumType.STRING)
     private TypeCar typeCar; //тип автомобиля
