@@ -1,6 +1,6 @@
-package com.example.driversregistrationjava.model.admin.dto;
+package com.example.driversregistrationjava.model.user.dto;
 
-import com.example.driversregistrationjava.model.admin.status.TypeAccess;
+import com.example.driversregistrationjava.model.user.status.TypeAccess;
 import lombok.Data;
 
 @Data

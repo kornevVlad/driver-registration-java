@@ -1,6 +1,6 @@
 package com.example.driversregistrationjava.controller;
 
-import com.example.driversregistrationjava.model.admin.dto.UserDto;
+import com.example.driversregistrationjava.model.user.dto.UserDto;
 import com.example.driversregistrationjava.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

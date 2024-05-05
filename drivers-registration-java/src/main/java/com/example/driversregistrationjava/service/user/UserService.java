@@ -1,6 +1,6 @@
 package com.example.driversregistrationjava.service.user;
 
-import com.example.driversregistrationjava.model.admin.dto.UserDto;
+import com.example.driversregistrationjava.model.user.dto.UserDto;
 
 public interface UserService {
 

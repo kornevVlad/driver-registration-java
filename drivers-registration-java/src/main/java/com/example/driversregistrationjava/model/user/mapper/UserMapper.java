@@ -1,7 +1,7 @@
-package com.example.driversregistrationjava.model.admin.mapper;
+package com.example.driversregistrationjava.model.user.mapper;
 
-import com.example.driversregistrationjava.model.admin.User;
-import com.example.driversregistrationjava.model.admin.dto.UserDto;
+import com.example.driversregistrationjava.model.user.User;
+import com.example.driversregistrationjava.model.user.dto.UserDto;
 import org.springframework.stereotype.Component;
 
 @Component

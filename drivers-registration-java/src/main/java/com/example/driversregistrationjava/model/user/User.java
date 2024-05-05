@@ -1,6 +1,6 @@
-package com.example.driversregistrationjava.model.admin;
+package com.example.driversregistrationjava.model.user;
 
-import com.example.driversregistrationjava.model.admin.status.TypeAccess;
+import com.example.driversregistrationjava.model.user.status.TypeAccess;
 import lombok.Data;
 
 import javax.persistence.*;

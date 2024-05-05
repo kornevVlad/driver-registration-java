@@ -1,7 +1,6 @@
 package com.example.driversregistrationjava.controller;
 
 
-import com.example.driversregistrationjava.model.admin.dto.UserDto;
 import com.example.driversregistrationjava.model.car.dto.CarDto;
 import com.example.driversregistrationjava.service.car.CarService;
 import lombok.RequiredArgsConstructor;
@@ -16,20 +15,21 @@ public class CarController {
 
     private final CarService carService;
 
-    @PostMapping() //создание автомобиля
-    public CarDto createCar(@RequestBody CarDto carDto) {
-        log.info("Car {}", carDto);
-        return carService.createCar(carDto);
+    @PostMapping("/{userId}") //создание автомобиля
+    public CarDto createCar(@RequestBody CarDto carDto, @PathVariable Long userId) {
+        log.info("Car {} , UserId {}", carDto, userId);
+        return carService.createCar(carDto, userId);
     }
 
-    @PatchMapping("/{carId}") //обновление данных автомобиля
-    public CarDto updateCar(@RequestBody CarDto carDto, @PathVariable Long carId) {
+    @PatchMapping("/{carId}/{userId}") //обновление данных автомобиля
+    public CarDto updateCar(@RequestBody CarDto carDto, @PathVariable Long carId,
+                            @PathVariable Long userId) {
         log.info("Car {}, id {}", carDto, carId);
-        return carService.updateCar(carDto, carId);
+        return carService.updateCar(carDto, carId, userId);
     }
 
-    @DeleteMapping("/{carId}") //удаление автомобиля
-    public void deleteCar(@PathVariable Long carId) {
-        carService.deleteCar(carId);
+    @DeleteMapping("/{carId}/{userId}") //удаление автомобиля
+    public void deleteCar(@PathVariable Long carId, @PathVariable Long userId) {
+        carService.deleteCar(carId, userId);
     }
 }

@@ -4,9 +4,9 @@ import com.example.driversregistrationjava.model.car.dto.CarDto;
 
 public interface CarService {
 
-    CarDto createCar(CarDto carDto); //добавление автомобиля
+    CarDto createCar(CarDto carDto, Long userId); //добавление автомобиля, пользователем в статусе FULL_ACCESS
 
-    CarDto updateCar(CarDto carDto, Long id); //обновление автомобиля
+    CarDto updateCar(CarDto carDto, Long carId, Long userId); //обновление автомобиля
 
-    void deleteCar(Long id); //удаление автомобиля
+    void deleteCar(Long carId, Long userId); //удаление автомобиля
 }

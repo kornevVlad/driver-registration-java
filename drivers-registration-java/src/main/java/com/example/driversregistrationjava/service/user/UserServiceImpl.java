@@ -1,9 +1,9 @@
 package com.example.driversregistrationjava.service.user;
 
-import com.example.driversregistrationjava.model.admin.User;
-import com.example.driversregistrationjava.model.admin.dto.UserDto;
-import com.example.driversregistrationjava.model.admin.mapper.UserMapper;
-import com.example.driversregistrationjava.model.admin.repository.UserRepository;
+import com.example.driversregistrationjava.model.user.User;
+import com.example.driversregistrationjava.model.user.dto.UserDto;
+import com.example.driversregistrationjava.model.user.mapper.UserMapper;
+import com.example.driversregistrationjava.model.user.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
