@@ -15,21 +15,22 @@ public class DriverController {
 
     private final DriverService driverService;
 
-    @PostMapping() //создание водителя
-    public DriverDto createUser(@RequestBody DriverDto driverDto) {
-        log.info("Driver {}", driverDto);
-        return driverService.createDriver(driverDto);
+    @PostMapping("/{userId}") //создание водителя
+    public DriverDto createUser(@RequestBody DriverDto driverDto, @PathVariable Long userId) {
+        log.info("Driver {}, UserId {}", driverDto, userId);
+        return driverService.createDriver(driverDto, userId);
     }
 
-    @PatchMapping("/{driverId}") //обновление водителя
-    public DriverDto updateDriver(@RequestBody DriverDto driverDto, @PathVariable Long driverId) {
-        log.info("Driver {}, id {}", driverDto, driverId);
-        return driverService.updateDriver(driverDto, driverId);
+    @PatchMapping("/{driverId}/{userId}") //обновление водителя
+    public DriverDto updateDriver(@RequestBody DriverDto driverDto, @PathVariable Long driverId,
+                                  @PathVariable Long userId) {
+        log.info("Driver {}, driverId {}, userId {}", driverDto, driverId, userId);
+        return driverService.updateDriver(driverDto, driverId, userId);
     }
 
-    @DeleteMapping("/{driverId}") //удаление водителя
-    public void deleteDriver(@PathVariable Long driverId) {
-        log.info("DriverId {}", driverId);
-        driverService.deleteDriver(driverId);
+    @DeleteMapping("/{driverId}/{userId}") //удаление водителя
+    public void deleteDriver(@PathVariable Long driverId, @PathVariable Long userId) {
+        log.info("DriverId {}, userId {}", driverId, userId);
+        driverService.deleteDriver(driverId, userId);
     }
 }

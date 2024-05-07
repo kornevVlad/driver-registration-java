@@ -6,11 +6,13 @@ import java.util.List;
 
 public interface RentService {
 
-    RentCarDriverDto createRent(Long carId, Long driverId, Long userId);
+    RentCarDriverDto createRent(Long userId, Long carId, Long driverId);
 
-    RentCarDriverDto updateRent(Long rentId, Long carId, Long driverId, Long userId);
+    RentCarDriverDto updateRentDriver(Long rentId,Long userId, Long driverId);
 
-    void deleteRent(Long rentId, Long userId);
+    RentCarDriverDto updateRentCar(Long rentId,Long userId, Long carId);
+
+    void deleteRentById(Long rentId, Long userId);
 
     RentCarDriverDto getRentalById(Long rentId);
 

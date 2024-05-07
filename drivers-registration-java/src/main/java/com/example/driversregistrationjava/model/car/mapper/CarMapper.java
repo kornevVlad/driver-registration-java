@@ -14,6 +14,8 @@ public class CarMapper {
     public Car CarDto(CarDto carDto) {
         Car car = new Car();
         car.setId(carDto.getId());
+        car.setCarBrand(carDto.getCarBrand());
+        car.setCarModel(carDto.getCarModel());
         car.setNumberCar(carDto.getNumberCar());
         car.setVinCar(carDto.getVinCar());
         car.setYearRelease(carDto.getYearRelease());
@@ -28,6 +30,8 @@ public class CarMapper {
     public CarDto toCarDto(Car car) {
         CarDto carDto = new CarDto();
         carDto.setId(car.getId());
+        carDto.setCarBrand(car.getCarBrand());
+        carDto.setCarModel(car.getCarModel());
         carDto.setNumberCar(car.getNumberCar());
         carDto.setVinCar(car.getVinCar());
         carDto.setYearRelease(car.getYearRelease());

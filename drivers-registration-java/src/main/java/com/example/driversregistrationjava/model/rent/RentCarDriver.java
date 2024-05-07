@@ -13,14 +13,15 @@ public class RentCarDriver {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "driver_id")
+    @Column(name = "rent_id")
     private Long id;
 
+
     @OneToOne
-    @JoinColumn(name = "rent_driver_id", referencedColumnName = "driver_id")
+    @JoinColumn(name = "driver_id")
     private Driver driver;
 
     @OneToOne
-    @JoinColumn(name = "rent_car_id", referencedColumnName = "car_id")
+    @JoinColumn(name = "car_id")
     private Car car;
 }

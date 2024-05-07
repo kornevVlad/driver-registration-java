@@ -49,6 +49,12 @@ public class CarServiceImpl implements CarService {
         if (upCar.getNumberCar() != null) {
             car.setNumberCar(upCar.getNumberCar());
         }
+        if (upCar.getCarBrand() != null) {
+            car.setCarBrand(upCar.getCarBrand());
+        }
+        if (upCar.getCarModel() != null) {
+            car.setCarModel(upCar.getCarModel());
+        }
         if (upCar.getVinCar() != null) {
             car.setVinCar(upCar.getVinCar());
         }
@@ -76,8 +82,7 @@ public class CarServiceImpl implements CarService {
     /**
      * валидация доспута пульзователя
      */
-
-    private User validationUserTypeAccess(Long userId) {
+    private void validationUserTypeAccess(Long userId) {
         User validUser = userRepository.getReferenceById(userId);
         log.info("User {}", validUser);
         if (validUser.getTypeAccess() != TypeAccess.FULL_ACCESS) {
@@ -85,6 +90,5 @@ public class CarServiceImpl implements CarService {
             //PARTIAL_ACCESS //частичный доступ
             throw new  ValidationBadRequest("Not Access");
         }
-        return validUser;
     }
 }
