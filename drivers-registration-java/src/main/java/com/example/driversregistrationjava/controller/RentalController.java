@@ -42,13 +42,14 @@ public class RentalController {
         rentService.deleteRentById(rentId, userId);
     }
 
-    @GetMapping//получение аренды по ID
-    public RentCarDriverDto getRentalById() {
-        return null;
+    @GetMapping("/{rentId}")//получение аренды по ID
+    public RentCarDriverDto getRentalById(@PathVariable Long rentId) {
+        log.info("RentId {}", rentId);
+        return rentService.getRentalById(rentId);
     }
 
     @GetMapping("/rentalAll") //получение списка аренды
     public List<RentCarDriverDto> getRentalList() {
-        return null;
+        return rentService.getRentalList();
     }
 }

@@ -21,7 +21,6 @@ public class UserController {
         return userService.createUser(userDto);
     }
 
-    //TODO добавить проверку пользователя
     @PatchMapping("/{userId}") //обновление пользователя
     public UserDto updateUser(@RequestBody UserDto userDto, @PathVariable Long userId) {
         log.info("User {}, id {}", userDto, userId);

@@ -21,6 +21,7 @@ import com.example.driversregistrationjava.validation.ValidationBadRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -53,7 +54,10 @@ public class RentServiceImpl implements RentService {
         this.driverMapper = driverMapper;
     }
 
-    @Override //создание аренды
+    /**
+     * создание аренды
+     */
+    @Override
     public RentCarDriverDto createRent(Long userId, Long carId, Long driverId) {
         validationUserTypeAccess(userId); //валидация пользователя
         Driver driverRent = driverRepository.getReferenceById(driverId);
@@ -82,7 +86,10 @@ public class RentServiceImpl implements RentService {
         return rentMapper.rentCarDriverDto(rentCarDriver, carDto, driverDto);
     }
 
-    @Override //обновление аренды (новый водитель)
+    /**
+     * обновление аренды (новый водитель)
+     */
+    @Override
     public RentCarDriverDto updateRentDriver(Long rentId, Long userId, Long driverId) {
         validationUserTypeAccess(userId);
         //новый водитель для аренды
@@ -106,7 +113,10 @@ public class RentServiceImpl implements RentService {
                 driverMapper.toDriverDto(rentCarDriver.getDriver()));
     }
 
-    @Override //обновление аренды (новый автомобиль)
+    /**
+     * обновление аренды (новый автомобиль)
+     */
+    @Override
     public RentCarDriverDto updateRentCar(Long rentId, Long userId, Long carId) {
         validationUserTypeAccess(userId);
         RentCarDriver rentCarDriver = rentRepository.getReferenceById(rentId);
@@ -128,7 +138,10 @@ public class RentServiceImpl implements RentService {
                 driverMapper.toDriverDto(rentCarDriver.getDriver()));
     }
 
-    @Override //удаление аренды
+    /**
+     * удаление аренды
+     */
+    @Override
     public void deleteRentById(Long rentId, Long userId) {
         validationUserTypeAccess(userId);
         RentCarDriver rentCarDriver = validationRentCarDriverById(rentId);
@@ -143,12 +156,22 @@ public class RentServiceImpl implements RentService {
 
     @Override //получение аренды по ID
     public RentCarDriverDto getRentalById(Long rentId) {
-        return null;
+        RentCarDriver rentCarDriver = validationRentCarDriverById(rentId);
+        return rentMapper.rentCarDriverDto(rentCarDriver,
+                carMapper.toCarDto(rentCarDriver.getCar()),
+                driverMapper.toDriverDto(rentCarDriver.getDriver()));
     }
 
     @Override //получение списка аренды
     public List<RentCarDriverDto> getRentalList() {
-        return null;
+        List<RentCarDriver> rentals = rentRepository.findAll();
+        List<RentCarDriverDto> rentalsDto = new ArrayList<>();
+        for (RentCarDriver rentCarDriver : rentals) {
+            rentalsDto.add(rentMapper.rentCarDriverDto(rentCarDriver,
+                    carMapper.toCarDto(rentCarDriver.getCar()),
+                    driverMapper.toDriverDto(rentCarDriver.getDriver())));
+        }
+        return rentalsDto;
     }
 
     /**
@@ -164,6 +187,9 @@ public class RentServiceImpl implements RentService {
         }
     }
 
+    /**
+     * Валидация аренды
+     */
     private RentCarDriver validationRentCarDriverById(Long rentId) {
         if (!rentRepository.existsById(rentId)) {
             log.error("Аренда с id {} не найдена", rentId);

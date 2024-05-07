@@ -1,0 +1,1337 @@
+{
+	"info": {
+		"_postman_id": "fadebfa6-62bf-4908-99f5-f3a74f6cbdf8",
+		"name": "Driver-registration",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18754793"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "User create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+									"});\r",
+									"pm.test(\"Test create user\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql(1);\r",
+									"    pm.expect(jsonData.name).to.eql('user');\r",
+									"    pm.expect(jsonData.lastName).to.eql('userovich');\r",
+									"    pm.expect(jsonData.typeAccess).to.eql('FULL_ACCESS');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"user\",\r\n    \"lastName\": \"userovich\",\r\n    \"typeAccess\": \"FULL_ACCESS\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+									"});\r",
+									"pm.test(\"Test update user\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql(1);\r",
+									"    pm.expect(jsonData.name).to.eql('vlad');\r",
+									"    pm.expect(jsonData.lastName).to.eql('kornev');\r",
+									"    pm.expect(jsonData.typeAccess).to.eql('FULL_ACCESS');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"vlad\",\r\n    \"lastName\": \"kornev\",\r\n    \"typeAccess\": \"FULL_ACCESS\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User create Type PARTIAL_ACCESS",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+									"});\r",
+									"pm.test(\"Test create user\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql(2);\r",
+									"    pm.expect(jsonData.name).to.eql('vlad');\r",
+									"    pm.expect(jsonData.lastName).to.eql('userovich');\r",
+									"    pm.expect(jsonData.typeAccess).to.eql('PARTIAL_ACCESS');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"vlad\",\r\n    \"lastName\": \"userovich\",\r\n    \"typeAccess\": \"PARTIAL_ACCESS\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User create 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+									"});\r",
+									"pm.test(\"Test create user\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql(3);\r",
+									"    pm.expect(jsonData.name).to.eql('igor');\r",
+									"    pm.expect(jsonData.lastName).to.eql('user');\r",
+									"    pm.expect(jsonData.typeAccess).to.eql('FULL_ACCESS');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"igor\",\r\n    \"lastName\": \"user\",\r\n    \"typeAccess\": \"FULL_ACCESS\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/users/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cars",
+			"item": [
+				{
+					"name": "Car create 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+									"});\r",
+									"pm.test(\"Test create user\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql(1);\r",
+									"    pm.expect(jsonData.numberCar).to.eql('123');\r",
+									"    pm.expect(jsonData.carBrand).to.eql('хендай');\r",
+									"    pm.expect(jsonData.carModel).to.eql('солярис');\r",
+									"    pm.expect(jsonData.vinCar).to.eql('1234567890');\r",
+									"    pm.expect(jsonData.yearRelease).to.eql(2014);\r",
+									"    pm.expect(jsonData.typeRentDriver).to.eql('NOT_FOR_RENT');\r",
+									"    pm.expect(jsonData.typeCar).to.eql('ECONOMY');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numberCar\": \"123\",\r\n    \"carBrand\": \"хендай\",\r\n    \"carModel\": \"солярис\",\r\n    \"vinCar\": \"1234567890\",\r\n    \"yearRelease\": 2014,\r\n    \"typeRentDriver\": \"NOT_FOR_RENT\",\r\n    \"typeCar\": \"ECONOMY\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cars/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cars",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Car update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+									"});\r",
+									"pm.test(\"Test create user\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql(1);\r",
+									"    pm.expect(jsonData.carBrand).to.eql('хендай');\r",
+									"    pm.expect(jsonData.carModel).to.eql('соул');\r",
+									"    pm.expect(jsonData.numberCar).to.eql('321');\r",
+									"    pm.expect(jsonData.vinCar).to.eql('1234567890');\r",
+									"    pm.expect(jsonData.yearRelease).to.eql(2015);\r",
+									"    pm.expect(jsonData.typeRentDriver).to.eql('NOT_FOR_RENT');\r",
+									"    pm.expect(jsonData.typeCar).to.eql('ECONOMY');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numberCar\": \"321\",\r\n    \"carBrand\": \"хендай\",\r\n    \"carModel\": \"соул\",\r\n    \"vinCar\": \"1234567890\",\r\n    \"yearRelease\": \"2015\",\r\n    \"typeRentDriver\": \"NOT_FOR_RENT\",\r\n    \"typeCar\": \"ECONOMY\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cars/:carId/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cars",
+								":carId",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "carId",
+									"value": "1"
+								},
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Car create Not valid user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([400]);\r",
+									"});\r",
+									"pm.test(\"Test create user\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.eql(\"Not Access\");\r",
+									"    \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numberCar\": \"123\",\r\n    \"vinCar\": \"1234567890\",\r\n    \"yearRelease\": 2014,\r\n    \"typeRentDriver\": \"NOT_FOR_RENT\",\r\n    \"typeCar\": \"ECONOMY\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cars/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cars",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Car update Not valid user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([400]);\r",
+									"});\r",
+									"pm.test(\"Test create user\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.eql(\"Not Access\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numberCar\": \"456\",\r\n    \"vinCar\": \"9876543210\",\r\n    \"yearRelease\": \"2015\",\r\n    \"typeRentDriver\": \"NOT_FOR_RENT\",\r\n    \"typeCar\": \"COMFORT\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cars/:carId/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cars",
+								":carId",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "carId",
+									"value": "1"
+								},
+								{
+									"key": "userId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Car create 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+									"});\r",
+									"pm.test(\"Test create user\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql(2);\r",
+									"    pm.expect(jsonData.numberCar).to.eql('111');\r",
+									"    pm.expect(jsonData.carBrand).to.eql('киа');\r",
+									"    pm.expect(jsonData.carModel).to.eql('рио');\r",
+									"    pm.expect(jsonData.vinCar).to.eql('12344321');\r",
+									"    pm.expect(jsonData.yearRelease).to.eql(2014);\r",
+									"    pm.expect(jsonData.typeRentDriver).to.eql('NOT_FOR_RENT');\r",
+									"    pm.expect(jsonData.typeCar).to.eql('ECONOMY');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numberCar\": \"111\",\r\n    \"carBrand\": \"киа\",\r\n    \"carModel\": \"рио\",\r\n    \"vinCar\": \"12344321\",\r\n    \"yearRelease\": 2014,\r\n    \"typeRentDriver\": \"NOT_FOR_RENT\",\r\n    \"typeCar\": \"ECONOMY\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cars/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cars",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Car create 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+									"});\r",
+									"pm.test(\"Test create user\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql(3);\r",
+									"    pm.expect(jsonData.numberCar).to.eql('444');\r",
+									"    pm.expect(jsonData.carBrand).to.eql('Мазда');\r",
+									"    pm.expect(jsonData.carModel).to.eql('6');\r",
+									"    pm.expect(jsonData.vinCar).to.eql('5555');\r",
+									"    pm.expect(jsonData.yearRelease).to.eql(2014);\r",
+									"    pm.expect(jsonData.typeRentDriver).to.eql('NOT_FOR_RENT');\r",
+									"    pm.expect(jsonData.typeCar).to.eql('ECONOMY');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numberCar\": \"444\",\r\n    \"carBrand\": \"Мазда\",\r\n    \"carModel\": \"6\",\r\n    \"vinCar\": \"5555\",\r\n    \"yearRelease\": 2014,\r\n    \"typeRentDriver\": \"NOT_FOR_RENT\",\r\n    \"typeCar\": \"ECONOMY\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cars/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cars",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Car delete 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/cars/:carId/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cars",
+								":carId",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "carId",
+									"value": "3"
+								},
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Drivers",
+			"item": [
+				{
+					"name": "Driver create 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+									"});\r",
+									"pm.test(\"Test create user\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql(1);\r",
+									"    pm.expect(jsonData.name).to.eql('driver');\r",
+									"    pm.expect(jsonData.lastName).to.eql('driverovich');\r",
+									"    pm.expect(jsonData.numberDriverLicense).to.eql('11A22');\r",
+									"    pm.expect(jsonData.drivingExperience).to.eql(3);\r",
+									"    pm.expect(jsonData.typeRentCar).to.eql('NOT_CAR');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"driver\",\r\n    \"lastName\": \"driverovich\",\r\n    \"numberDriverLicense\": \"11A22\",\r\n    \"drivingExperience\": 3,\r\n    \"typeRentCar\": \"NOT_CAR\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/drivers/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"drivers",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Driver update",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+									"});\r",
+									"pm.test(\"Test create user\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql(1);\r",
+									"    pm.expect(jsonData.name).to.eql('vlad');\r",
+									"    pm.expect(jsonData.lastName).to.eql('driverovich');\r",
+									"    pm.expect(jsonData.numberDriverLicense).to.eql('11A22');\r",
+									"    pm.expect(jsonData.drivingExperience).to.eql(4);\r",
+									"    pm.expect(jsonData.typeRentCar).to.eql('NOT_CAR');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"vlad\",\r\n    \"lastName\": \"driverovich\",\r\n    \"numberDriverLicense\": \"11A22\",\r\n    \"drivingExperience\": 4,\r\n    \"typeRentCar\": \"NOT_CAR\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/drivers/:driverId/:useId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"drivers",
+								":driverId",
+								":useId"
+							],
+							"variable": [
+								{
+									"key": "driverId",
+									"value": "1"
+								},
+								{
+									"key": "useId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Driver create 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+									"});\r",
+									"pm.test(\"Test create user\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql(2);\r",
+									"    pm.expect(jsonData.name).to.eql('anna');\r",
+									"    pm.expect(jsonData.lastName).to.eql('driver');\r",
+									"    pm.expect(jsonData.numberDriverLicense).to.eql('22A22');\r",
+									"    pm.expect(jsonData.drivingExperience).to.eql(3);\r",
+									"    pm.expect(jsonData.typeRentCar).to.eql('NOT_CAR');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"anna\",\r\n    \"lastName\": \"driver\",\r\n    \"numberDriverLicense\": \"22A22\",\r\n    \"drivingExperience\": 3,\r\n    \"typeRentCar\": \"NOT_CAR\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/drivers/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"drivers",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Driver create 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+									"});\r",
+									"pm.test(\"Test create user\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql(3);\r",
+									"    pm.expect(jsonData.name).to.eql('rich');\r",
+									"    pm.expect(jsonData.lastName).to.eql('rich');\r",
+									"    pm.expect(jsonData.numberDriverLicense).to.eql('00A22');\r",
+									"    pm.expect(jsonData.drivingExperience).to.eql(3);\r",
+									"    pm.expect(jsonData.typeRentCar).to.eql('NOT_CAR');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"rich\",\r\n    \"lastName\": \"rich\",\r\n    \"numberDriverLicense\": \"00A22\",\r\n    \"drivingExperience\": 3,\r\n    \"typeRentCar\": \"NOT_CAR\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/drivers/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"drivers",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Driver delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/drivers/:driverId/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"drivers",
+								":driverId",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "driverId",
+									"value": "3"
+								},
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rental",
+			"item": [
+				{
+					"name": "Rent create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/rents/:userId/?carId=1&driverId=1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"rents",
+								":userId",
+								""
+							],
+							"query": [
+								{
+									"key": "carId",
+									"value": "1"
+								},
+								{
+									"key": "driverId",
+									"value": "1"
+								}
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rent update driver",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/rents/:rentId/:userId?driverId=2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"rents",
+								":rentId",
+								":userId"
+							],
+							"query": [
+								{
+									"key": "driverId",
+									"value": "2"
+								}
+							],
+							"variable": [
+								{
+									"key": "rentId",
+									"value": "1"
+								},
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rent update car",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/rents/:rentId/:userId/:carId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"rents",
+								":rentId",
+								":userId",
+								":carId"
+							],
+							"variable": [
+								{
+									"key": "rentId",
+									"value": "1"
+								},
+								{
+									"key": "userId",
+									"value": "1"
+								},
+								{
+									"key": "carId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rent getById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/rents/:rentId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"rents",
+								":rentId"
+							],
+							"variable": [
+								{
+									"key": "rentId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rent getAll",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/rents/rentalAll",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"rents",
+								"rentalAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete rent by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/rents/:rentId/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"rents",
+								":rentId",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "rentId",
+									"value": "1"
+								},
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:9090",
+			"type": "string"
+		}
+	]
+}
