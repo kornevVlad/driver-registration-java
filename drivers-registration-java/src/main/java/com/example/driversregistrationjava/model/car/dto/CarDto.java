@@ -11,6 +11,10 @@ public class CarDto {
 
     private Long id;
 
+    private String carBrand; //марка автомобиля
+
+    private String carModel; //модель автомобиля
+
     private String numberCar; //номер автомобиля
 
     private String vinCar; //вин номер автомобиля

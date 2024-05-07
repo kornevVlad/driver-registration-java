@@ -16,6 +16,12 @@ public class Car {
     @Column(name = "car_id")
     private Long id;
 
+    @Column(name = "car_brand")
+    private String carBrand;
+
+    @Column(name = "car_model")
+    private String carModel;
+
     @Column(name = "number_car")
     private String numberCar; //номер автомобиля
 

@@ -4,9 +4,9 @@ import com.example.driversregistrationjava.model.driver.dto.DriverDto;
 
 public interface DriverService {
 
-    DriverDto createDriver(DriverDto driverDto);
+    DriverDto createDriver(DriverDto driverDto, Long userId);
 
-    DriverDto updateDriver(DriverDto driverDto, Long id);
+    DriverDto updateDriver(DriverDto driverDto, Long driverId, Long userId);
 
-    void deleteDriver(Long id);
+    void deleteDriver(Long driverId, Long userId);
 }

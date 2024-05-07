@@ -1,6 +1,6 @@
 package com.example.driversregistrationjava.model.driver;
 
-import com.example.driversregistrationjava.model.car.Car;
+
 import com.example.driversregistrationjava.model.driver.status.TypeRentCar;
 import lombok.Data;
 
